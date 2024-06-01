@@ -1,0 +1,19 @@
+{
+  "name": "mern-ecommerce-multivendor-server",
+  "version": "1.0.0",
+  "description": "Ecommerce multivendor web app backend built with Node, Express, MongoDB, and Mongoose ODM",
+  "main": "server.js",
+  "repository": "https://github.com/BhanuVikram/MERN_Ecommerce_Multivendor",
+  "author": "Bhanu Vikram",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
