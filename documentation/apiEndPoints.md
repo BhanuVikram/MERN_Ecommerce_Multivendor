@@ -9,6 +9,8 @@
 | Get a ticket                          | GET  | /admin/tickets/:ticket_id       |
 | Respond to a ticket                   | PUT  | /admin/tickets/:ticket_id       |
 | Update a ticket                       | PUT  | /admin/tickets/:ticket_id       |
+| Get all threads                       | GET  | /admin/threads/                 |
+| Get a single thread                   | GET  | /admin/threads/:user_id         |
 | Update vendor status                  | PUT  | /admin/vendor/:vendor_id        |
 | Get all vendors                       | GET  | /admin/vendors                  |
 | Get all orders                        | GET  | /admin/orders                   |
@@ -18,6 +20,25 @@
 | Get all events                        | GET  | /admin/events                   |
 | Get all events of a vendor            | GET  | /admin/events/:vendor_id        |
 | Dashboard                             | GET  | /admin/dashboard                |
+
+<br>
+
+| Agent                                 |      |                                 |
+| ------------------------------------- | ---- | ------------------------------- |
+| Agent log in                          | POST | /agent/login                    |
+| Get all tickets                       | GET  | /agent/tickets                  |
+| Get a ticket                          | GET  | /agent/tickets/:ticket_id       |
+| Respond to a ticket                   | PUT  | /agent/tickets/:ticket_id       |
+| Update a ticket                       | PUT  | /agent/tickets/:ticket_id       |
+| Update vendor status                  | PUT  | /agent/vendor/:vendor_id        |
+| Get all vendors                       | GET  | /agent/vendors                  |
+| Get all customer orders of a vendor   | GET  | /agent/orders/vendor/:vendor_id |
+| Get all customer orders of a customer | GET  | /agent/orders/user/:user_id     |
+| Get seleted orders                    | GET  | /agent/orders/:order_id         |
+| Update an order                       | PUT  | /agent/orders/:order_id         |
+| Get all events                        | GET  | /agent/events                   |
+| Get all events of a vendor            | GET  | /agent/events/:vendor_id        |
+| Dashboard                             | GET  | /agent/dashboard                |
 
 <br>
 
