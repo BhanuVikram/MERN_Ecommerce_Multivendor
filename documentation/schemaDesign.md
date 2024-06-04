@@ -1,5 +1,7 @@
 ### Schema Design
 
+<br>
+
 #### Data Sets
 
 - User Schema
@@ -37,20 +39,20 @@
 
 #### Product Schema
 
-| Key         | Type   | Required | Unique | Default      | Foreign Key |
-| ----------- | ------ | -------- | ------ | ------------ | ----------- |
-| Title       | String | Yes      |        |              |             |
-| Category    | String | Yes      |        |              |             |
-| Description | String | Yes      |        |              |             |
-| Image       |        | Yes      |        |              |             |
-| Price       | Number | Yes      |        |              |             |
-| Quantity    | Number | Yes      |        | 0            |             |
-| Sold        | Number | Yes      |        | 0            |             |
-| Remaining   | Number | Yes      |        | 0            |             |
-| Reviews     | Array  |          |        |              |             |
-| Ratings     | Number |          |        |              |             |
-| Vendor ID   | Object |          |        |              | User Schema |
-| Created At  | Date   |          |        | Current time |             |
+| Key                | Type   | Required | Unique | Default      | Foreign Key |
+| ------------------ | ------ | -------- | ------ | ------------ | ----------- |
+| Title              | String | Yes      |        |              |             |
+| Category           | String | Yes      |        |              |             |
+| Description        | String | Yes      |        |              |             |
+| Image              |        | Yes      |        |              |             |
+| Price              | Number | Yes      |        |              |             |
+| Total Quantity     | Number | Yes      |        | 0            |             |
+| Quantity Sold      | Number |          |        | 0            |             |
+| Quantity Remaining | Number |          |        | 0            |             |
+| Reviews            | Array  |          |        |              |             |
+| Ratings            | Number |          |        |              |             |
+| Vendor ID          | Object |          |        |              | User Schema |
+| Created At         | Date   |          |        | Current time |             |
 
 <br>
 
@@ -58,11 +60,11 @@
 
 | Key              | Type   | Required | Unique | Default      | Foreign Key |
 | ---------------- | ------ | -------- | ------ | ------------ | ----------- |
-| Cart             | Array  | Yes      |        |              |             |
-| User             | Object | Yes      |        |              | User Schema |
+| Cart             | Array  |          |        |              |             |
+| User             | Object |          |        |              | User Schema |
 | Shipping Address | Object | Yes      |        |              |             |
-| Total Price      | Number | Yes      |        |              |             |
-| Status           | String | Yes      |        | Processing   |             |
+| Total Price      | Number |          |        |              |             |
+| Status           | String |          |        | Processing   |             |
 | Payment Info     | Object | Yes      |        |              |             |
 | Created At       | Date   |          |        | Current Time |             |
 | Delivered At     | Date   |          |        |              |             |
@@ -123,8 +125,9 @@
 | Phone Number                | Number | Yes      |        |              |                 |
 | Logo                        |        | Yes      |        |              |                 |
 | Banner                      |        | Yes      |        |              |                 |
-| Total Amount Withdrawn      | Number |          |        |              | Withdraw Schema |
-| Total Number of Withdrawals | Number |          |        |              | Withdraw Schema |
+| Withdrawals                 | Object |          |        |              | Withdraw Schema |
+| Total Amount Withdrawn      | Number |          |        | 0            |                 |
+| Total Number of Withdrawals | Number |          |        | 0            |                 |
 | Created At                  | Date   |          |        | Current Time |                 |
 
 <br>
@@ -133,13 +136,13 @@
 
 | Key                         | Type   | Required | Unique | Default      | Foreign Key |
 | --------------------------- | ------ | -------- | ------ | ------------ | ----------- |
-| Total Amount                | Number | Yes      |        | 0            |             |
-| Total Amount Withdrawn      | Number | Yes      |        | 0            |             |
-| Total Number of Withdrawals | Number | Yes      |        | 0            |             |
-| Available Amount            | Number | Yes      |        | 0            |             |
-| Status                      | String | Yes      |        |              |             |
-| Vendor ID                   | Object | Yes      |        |              | User Schema |
-| Created At                  | Date   | Yes      |        | Current Time |             |
+| Total Amount                | Number |          |        | 0            |             |
+| Total Amount Withdrawn      | Number |          |        | 0            |             |
+| Total Number of Withdrawals | Number |          |        | 0            |             |
+| Available Amount            | Number |          |        | 0            |             |
+| Withdrawal Status           | String |          |        |              |             |
+| Vendor ID                   | Object |          |        |              | User Schema |
+| Created At                  | Date   |          |        | Current Time |             |
 
 <br>
 
@@ -149,10 +152,10 @@
 | ----------- | ------ | -------- | ------ | ------------ | ----------- |
 | Title       | String | Yes      |        |              |             |
 | Body        | String | Yes      |        |              |             |
-| Sender      | Object | Yes      |        |              | User Schema |
-| Receiver    | Object | Yes      |        |              | User Schema |
+| Sender      | Object |          |        |              | User Schema |
+| Receiver    | Object |          |        |              | User Schema |
 | Attachments |        |          |        |              |             |
-| Created At  | Date   | Yes      |        | Current Time |             |
+| Created At  | Date   |          |        | Current Time |             |
 
 <br>
 
@@ -160,8 +163,9 @@
 
 | Key             | Type   | Required | Unique | Default      | Foreign Key |
 | --------------- | ------ | -------- | ------ | ------------ | ----------- |
-| Conversation ID |        | Yes      |        |              |             |
-| Sender          | Object | Yes      |        |              | User Schema |
-| Receiver        | Object | Yes      |        |              | User Schema |
+| Conversation ID |        |          |        |              |             |
+| Message         | String | Yes      |        |              |             |
+| Sender          | Object |          |        |              | User Schema |
+| Receiver        | Object |          |        |              | User Schema |
 | Attachments     |        |          |        |              |             |
-| Timestamp       | Date   | Yes      |        | Current Time |             |
+| Timestamp       | Date   |          |        | Current Time |             |
