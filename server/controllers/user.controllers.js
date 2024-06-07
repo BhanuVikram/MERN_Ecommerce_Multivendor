@@ -44,8 +44,6 @@ exports.signUp = async (req, res, next) => {
 exports.signIn = async (req, res, next) => {
   res.header("Content-Type", "application/json");
 
-  console.log("!!!!!!!!!!!!!!!!! Request Body:", req.body);
-
   try {
     const { email, password } = req.body.payload;
     if (!email || !password) {
@@ -120,25 +118,21 @@ exports.updatePhone = async (req, res, next) => {
   res.header("Content-Type", "application/json");
 
   try {
-    let userProfile = await User.findById(req.params._id);
-    if (!userProfile) {
+    let user = await User.findById(req.params._id);
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: "Profile not found!",
       });
     }
-    userProfile = await User.findByIdAndUpdate(
-      req.params._id,
-      req.body.payload,
-      {
-        new: true,
-        runValidators: true,
-        useFindAndModify: false,
-      }
-    );
+    user = await User.findByIdAndUpdate(req.params._id, req.body.payload, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    });
     return res.status(200).json({
       success: true,
-      userProfile,
+      user,
       message: "Phone number updated successfully!",
     });
   } catch (error) {
@@ -156,25 +150,21 @@ exports.updateAddress = async (req, res, next) => {
   res.header("Content-Type", "application/json");
 
   try {
-    let userProfile = await User.findById(req.params._id);
-    if (!userProfile) {
+    let user = await User.findById(req.params._id);
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: "Profile not found!",
       });
     }
-    userProfile = await User.findByIdAndUpdate(
-      req.params._id,
-      req.body.payload,
-      {
-        new: true,
-        runValidators: true,
-        useFindAndModify: false,
-      }
-    );
+    user = await User.findByIdAndUpdate(req.params._id, req.body.payload, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    });
     return res.status(200).json({
       success: true,
-      userProfile,
+      user,
       message: "Address updated successfully!",
     });
   } catch (error) {
@@ -192,32 +182,28 @@ exports.addAddress = async (req, res, next) => {
   res.header("Content-Type", "application/json");
 
   try {
-    let userProfile = await User.findById(req.params._id);
-    if (!userProfile) {
+    let user = await User.findById(req.params._id);
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: "Profile not found!",
       });
     }
 
-    let currentAddresses = userProfile.addresses || [];
+    let currentAddresses = user.addresses || [];
     let newAddress = currentAddresses.concat(req.body.payload);
-    userProfile.addresses = newAddress;
+    user.addresses = newAddress;
 
-    await userProfile.save();
+    await user.save();
 
-    userProfile = await User.findByIdAndUpdate(
-      req.params._id,
-      req.body.payload,
-      {
-        new: true,
-        runValidators: true,
-        useFindAndModify: false,
-      }
-    );
+    user = await User.findByIdAndUpdate(req.params._id, req.body.payload, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    });
     return res.status(200).json({
       success: true,
-      userProfile,
+      user,
       message: "Address added successfully!",
     });
   } catch (error) {
