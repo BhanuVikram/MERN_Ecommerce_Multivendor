@@ -214,3 +214,46 @@ exports.addAddress = async (req, res, next) => {
     });
   }
 };
+
+// * UPDATE PASSWORD
+
+exports.updatePassword = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+
+  try {
+    let user = await User.findById(req.params._id).select("+password");
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "Profile not found!",
+      });
+    }
+
+    let oldPassword = req.body.payload.oldPassword;
+    let newPassword = req.body.payload.newPassword;
+
+    const isSamePassword = await user.comparePassword(oldPassword);
+
+    if (!isSamePassword) {
+      return res.status(404).json({
+        success: false,
+        message: "Incorrect password",
+      });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      user,
+      message: "Password updated successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
