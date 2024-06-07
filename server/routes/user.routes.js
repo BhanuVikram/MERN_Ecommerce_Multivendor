@@ -12,6 +12,7 @@ const {
   myProfile,
   updatePhone,
   updateAddress,
+  addAddress,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -23,5 +24,6 @@ router.route("/signin").post(signIn);
 router.route("/me").get(isAuthenticated, myProfile);
 router.route("/updatephone/?:_id").put(isAuthenticated, updatePhone);
 router.route("/updateaddress/?:_id").put(isAuthenticated, updateAddress);
+router.route("/addaddress/?:_id").put(isAuthenticated, addAddress);
 
 module.exports = router;

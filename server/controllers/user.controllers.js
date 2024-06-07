@@ -185,3 +185,46 @@ exports.updateAddress = async (req, res, next) => {
     });
   }
 };
+
+// * ADD ADDRESS
+
+exports.addAddress = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+
+  try {
+    let userProfile = await User.findById(req.params._id);
+    if (!userProfile) {
+      return res.status(404).json({
+        success: false,
+        message: "Profile not found!",
+      });
+    }
+
+    let currentAddresses = userProfile.addresses || [];
+    let newAddress = currentAddresses.concat(req.body.payload);
+    userProfile.addresses = newAddress;
+
+    await userProfile.save();
+
+    userProfile = await User.findByIdAndUpdate(
+      req.params._id,
+      req.body.payload,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+    return res.status(200).json({
+      success: true,
+      userProfile,
+      message: "Address added successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
