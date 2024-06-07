@@ -29,7 +29,7 @@
 | Email                | String | Yes      | Yes    |              |             |
 | Phone Number         | Number | Yes      | Yes    |              |             |
 | Addresses            | Array  | Yes      |        |              |             |
-| Avatar               |        |          |        |              |             |
+| Password             | String | Yes      |        |              |             |
 | Role                 | String |          |        | User         |             |
 | Created At           | Date   |          |        | Current Time |             |
 | Reset Password Token | String |          |        |              |             |
