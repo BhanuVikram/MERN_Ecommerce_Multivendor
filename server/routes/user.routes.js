@@ -10,6 +10,7 @@ const {
   signUp,
   signIn,
   myProfile,
+  updatePhone,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -19,5 +20,6 @@ const router = express.Router();
 router.route("/signup").post(signUp);
 router.route("/signin").post(signIn);
 router.route("/me").get(isAuthenticated, myProfile);
+router.route("/updatephone/?:_id").put(isAuthenticated, updatePhone);
 
 module.exports = router;

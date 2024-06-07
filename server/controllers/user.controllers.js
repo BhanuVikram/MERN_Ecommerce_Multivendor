@@ -113,3 +113,39 @@ exports.myProfile = async (req, res, next) => {
     });
   }
 };
+
+// * UPDATE PHONE NUMBER
+
+exports.updatePhone = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+
+  try {
+    let userProfile = await User.findById(req.params._id);
+    if (!userProfile) {
+      return res.status(404).json({
+        success: false,
+        message: "Profile not found!",
+      });
+    }
+    userProfile = await User.findByIdAndUpdate(
+      req.params._id,
+      req.body.payload,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+    return res.status(200).json({
+      success: true,
+      userProfile,
+      message: "Phone number updated successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
