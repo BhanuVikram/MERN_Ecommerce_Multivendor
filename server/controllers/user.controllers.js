@@ -91,3 +91,25 @@ exports.signIn = async (req, res, next) => {
     });
   }
 };
+
+// * MY PROFILE
+
+exports.myProfile = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user).populate(
+      "firstname lastname email phone addresses createdAt role"
+    );
+
+    res.status(200).json({
+      success: true,
+      user,
+      message: "User profile fetched successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `User profile error: ${error.message}`,
+    });
+  }
+};
