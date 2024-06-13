@@ -30,6 +30,6 @@ router.route("/product/:_id").get(getSingleProduct);
 
 router
   .route("/updateproduct/:_id")
-  .put(isAuthenticated, isAuthorized("vendor"), updateProduct);
+  .put(isAuthenticated, isAuthorized("admin", "vendor"), updateProduct);
 
 module.exports = router;

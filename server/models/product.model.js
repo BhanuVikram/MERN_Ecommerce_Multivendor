@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    minlength: [200, "Description cannot shorter than 200 characters"],
+    minlength: [100, "Description cannot shorter than 100 characters"],
     maxlength: [2500, "Description cannot be longer than 2500 characters"],
     required: [true, "Enter product description"],
   },
@@ -45,6 +45,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
   },
   inStock: {
+    type: Boolean,
+    default: false,
+  },
+  disabled: {
     type: Boolean,
     default: false,
   },
