@@ -13,6 +13,7 @@ const {
   createProduct,
   getAllProducts,
   getSingleProduct,
+  updateProduct,
 } = require("../controllers/product.controllers.js");
 
 const router = express.Router();
@@ -26,5 +27,9 @@ router
 router.route("/products").get(getAllProducts);
 
 router.route("/product/:_id").get(getSingleProduct);
+
+router
+  .route("/updateproduct/:_id")
+  .put(isAuthenticated, isAuthorized("vendor"), updateProduct);
 
 module.exports = router;

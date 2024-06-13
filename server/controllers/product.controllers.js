@@ -78,3 +78,38 @@ exports.getSingleProduct = async (req, res, next) => {
     });
   }
 };
+
+// * UPDATE A PRODUCT - VENDOR
+
+exports.updateProduct = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleProduct = await Product.findById(req.params._id);
+    if (!singleProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found!",
+      });
+    }
+    singleProduct = await Product.findByIdAndUpdate(
+      req.params._id,
+      req.body.payload,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+    return res.status(200).json({
+      success: true,
+      singleProduct,
+      message: "Product updated successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
