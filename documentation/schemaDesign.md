@@ -39,20 +39,22 @@
 
 #### Product Schema
 
-| Key                | Type   | Required | Unique | Default      | Foreign Key |
-| ------------------ | ------ | -------- | ------ | ------------ | ----------- |
-| Title              | String | Yes      |        |              |             |
-| Category           | String | Yes      |        |              |             |
-| Description        | String | Yes      |        |              |             |
-| Image              |        | Yes      |        |              |             |
-| Price              | Number | Yes      |        |              |             |
-| Total Quantity     | Number | Yes      |        | 0            |             |
-| Quantity Sold      | Number |          |        | 0            |             |
-| Quantity Remaining | Number |          |        | 0            |             |
-| Reviews            | Array  |          |        |              |             |
-| Ratings            | Number |          |        |              |             |
-| Vendor ID          | Object |          |        |              | User Schema |
-| Created At         | Date   |          |        | Current time |             |
+| Key                | Type    | Required | Unique | Default      | Foreign Key |
+| ------------------ | ------- | -------- | ------ | ------------ | ----------- |
+| Title              | String  | Yes      |        |              |             |
+| Category           | String  | Yes      |        |              |             |
+| Description        | String  | Yes      |        |              |             |
+| Image              |         | Yes      |        |              |             |
+| Price              | Number  | Yes      |        |              |             |
+| Total Quantity     | Number  | Yes      |        | 0            |             |
+| Quantity Sold      | Number  |          |        | 0            |             |
+| Quantity Remaining | Number  |          |        | 0            |             |
+| In Stock           | Boolean |          |        | false        |             |
+| Disabled           | Boolean |          |        | false        |             |
+| Reviews            | Array   |          |        |              |             |
+| Ratings            | Number  |          |        |              |             |
+| Created By         | Object  |          |        |              | User Schema |
+| Created At         | Date    |          |        | Current time |             |
 
 <br>
 
@@ -75,7 +77,7 @@
 
 | Key                 | Type   | Required | Unique | Default      | Foreign Key    |
 | ------------------- | ------ | -------- | ------ | ------------ | -------------- |
-| Vendor ID           | Object |          |        |              | User Schema    |
+| Created By          | Object |          |        |              | User Schema    |
 | Name                | String | Yes      |        |              |                |
 | Description         | String | Yes      |        |              |                |
 | Category            | String | Yes      |        |              |                |
@@ -105,7 +107,7 @@
 | Maximum Purchase Amount | Number | Yes      |        | 0            |                |
 | Selected Products       | Array  | Yes      |        |              | Product Schema |
 | Coupon Quantity         | Number | Yes      |        |              |                |
-| Vendor ID               | Object |          |        |              | User Schema    |
+| Created By              | Object |          |        |              | User Schema    |
 | Created At              | Date   |          |        | Current Time |                |
 
 <br>
@@ -114,7 +116,7 @@
 
 | Key                         | Type   | Required | Unique | Default      | Foreign Key     |
 | --------------------------- | ------ | -------- | ------ | ------------ | --------------- |
-| Vendor ID                   | Object |          |        |              | User Schema     |
+| Created By                  | Object |          |        |              | User Schema     |
 | Name                        | String | Yes      | Yes    |              |                 |
 | Description                 | String | Yes      |        |              |                 |
 | Email                       | String | Yes      | Yes    |              |                 |
@@ -141,7 +143,7 @@
 | Total Number of Withdrawals | Number |          |        | 0            |             |
 | Available Amount            | Number |          |        | 0            |             |
 | Withdrawal Status           | String |          |        |              |             |
-| Vendor ID                   | Object |          |        |              | User Schema |
+| Created By                  | Object |          |        |              | User Schema |
 | Created At                  | Date   |          |        | Current Time |             |
 
 <br>

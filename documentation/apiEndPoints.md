@@ -34,7 +34,7 @@
 | Get all vendors                       | GET  | /agent/vendors                  |
 | Get all customer orders of a vendor   | GET  | /agent/orders/vendor/:vendor_id |
 | Get all customer orders of a customer | GET  | /agent/orders/user/:user_id     |
-| Get seleted orders                    | GET  | /agent/orders/:order_id         |
+| Get selected orders                   | GET  | /agent/orders/:order_id         |
 | Update an order                       | PUT  | /agent/orders/:order_id         |
 | Get all events                        | GET  | /agent/events                   |
 | Get all events of a vendor            | GET  | /agent/events/:vendor_id        |
@@ -46,6 +46,8 @@
 | ---------------------------- | ---- | -------------------------- |
 | Vendor sign up               | POST | /vendor/signup             |
 | Vendor log in                | POST | /vendor/login              |
+| Create a product             | POST | /vendor/createproduct      |
+| Update a product             | PUT  | /vendor/updateproduct      |
 | Get all orders               | GET  | /vendor/orders             |
 | Get all orders of a customer | GET  | /vendor/orders/:user_id    |
 | Update an order              | PUT  | /vendor/orders/:order_id   |
@@ -71,7 +73,7 @@
 | User log in                          | POST   | /login                          |
 | User profile                         | GET    | /me                             |
 | Get all products                     | GET    | /products                       |
-| Get all products of a vendor         | GET    | /product/:vendor_id             |
+| Get all products of a vendor         | GET    | /products/:vendor_id             |
 | Get single product                   | GET    | /product/:product_id            |
 | Get all product reviews              | GET    | /product/reviews/:product_id    |
 | Write a product review               | POST   | /product/reviews/:product_id    |
