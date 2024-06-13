@@ -1,6 +1,6 @@
 const Product = require("../models/product.model");
 
-// * CREATE NEW PRODUCT
+// * CREATE NEW PRODUCT - VENDOR
 
 exports.createProduct = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -30,7 +30,7 @@ exports.createProduct = async (req, res, next) => {
   }
 };
 
-// * GET ALL PRODUCTS
+// * GET ALL PRODUCTS - ALL
 
 exports.getAllProducts = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -40,7 +40,35 @@ exports.getAllProducts = async (req, res, next) => {
     res.status(200).json({
       success: true,
       products: allProducts,
-      message: "Fetched all products!",
+      message: "Fetched all products successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
+
+// * GET A SINGLE PRODUCT - ALL
+
+exports.getSingleProduct = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleProduct = await Product.findById(req.params._id).populate(
+      "createdBy"
+    );
+    if (!singleProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found!",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      singleProduct,
+      message: "Fetched the product successfully!",
     });
   } catch (error) {
     console.log(error);
