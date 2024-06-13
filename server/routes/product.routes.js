@@ -9,7 +9,10 @@ const {
 
 // * CONTROLLERS IMPORT
 
-const { createProduct } = require("../controllers/product.controllers.js");
+const {
+  createProduct,
+  getAllProducts,
+} = require("../controllers/product.controllers.js");
 
 const router = express.Router();
 
@@ -18,5 +21,7 @@ const router = express.Router();
 router
   .route("/createproduct")
   .post(isAuthenticated, isAuthorized("vendor"), createProduct);
+
+router.route("/getallproducts").get(getAllProducts);
 
 module.exports = router;
