@@ -69,6 +69,7 @@
 | Status           | String |          |        | Processing   |             |
 | Payment Info     | Object | Yes      |        |              |             |
 | Created At       | Date   |          |        | Current Time |             |
+| Delivered By     | String |          |        |              |             |
 | Delivered At     | Date   |          |        |              |             |
 
 <br>
@@ -130,6 +131,8 @@
 | Withdrawals                 | Object |          |        |              | Withdraw Schema |
 | Total Amount Withdrawn      | Number |          |        | 0            |                 |
 | Total Number of Withdrawals | Number |          |        | 0            |                 |
+| Reviews                     | Array  |          |        |              |                 |
+| Ratings                     | Number |          |        |              |                 |
 | Created At                  | Date   |          |        | Current Time |                 |
 
 <br>

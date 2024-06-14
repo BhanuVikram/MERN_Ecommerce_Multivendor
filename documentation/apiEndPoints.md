@@ -11,9 +11,15 @@
 | Update a ticket                       | PUT  | /admin/tickets/:ticket_id       |
 | Get all threads                       | GET  | /admin/threads/                 |
 | Get a single thread                   | GET  | /admin/threads/:user_id         |
-| Update vendor status                  | PUT  | /admin/vendor/:vendor_id        |
+| Get all users                         | GET  | /admin/users                    |
+| Get a single user                     | GET  | /admin/users/:user_id           |
+| Get all agents                        | GET  | /admin/agents                   |
+| Get a single agent                    | GET  | /admin/agents/:agent_id         |
 | Get all vendors                       | GET  | /admin/vendors                  |
+| Get a single vendor                   | GET  | /admin/vendors/:vendor_id       |
+| Update vendor status                  | PUT  | /admin/vendor/:vendor_id        |
 | Get all orders                        | GET  | /admin/orders                   |
+| Get a single order                    | GET  | /admin/orders/:order_id         |
 | Get all customer orders of a vendor   | GET  | /admin/orders/vendor/:vendor_id |
 | Get all customer orders of a customer | GET  | /admin/orders/user/:user_id     |
 | Update an order                       | PUT  | /admin/orders/:order_id         |
@@ -67,46 +73,46 @@
 
 <br>
 
-| User                                 |        |                                 |
-| ------------------------------------ | ------ | ------------------------------- |
-| User sign up                         | POST   | /signup                         |
-| User log in                          | POST   | /login                          |
-| User profile                         | GET    | /me                             |
-| Get all products                     | GET    | /products                       |
-| Get all products of a vendor         | GET    | /products/:vendor_id             |
-| Get single product                   | GET    | /product/:product_id            |
-| Get all product reviews              | GET    | /product/reviews/:product_id    |
-| Write a product review               | POST   | /product/reviews/:product_id    |
-| Edit my product review               | PUT    | /me/product/reviews/:product_id |
-| Delete a product review              | DELETE | /product/reviews/:product_id    |
-| Get single shop/seller profile       | GET    | /sellers/:vendor_id             |
-| Get all seller reviews               | GET    | /seller/reviews/:vendor_id      |
-| Write a seller review                | POST   | /seller/reviews/:vendor_id      |
-| Edit my seller review                | PUT    | /me/seller/reviews/:vendor_id   |
-| Delete a seller review               | DELETE | /seller/reviews/:vendor_id      |
-| User profile                         | GET    | /me                             |
-| Update user profile                  | PUT    | /me/update                      |
-| Get all of my orders                 | GET    | /me/orders                      |
-| Get a single order                   | GET    | /me/order/:order_id             |
-| Place a new order                    | POST   | /me/order                       |
-| Cancel an order                      | PUT    | /me/order/:order_id             |
-| Add a product to wishlist            | PUT    | /wishlist/add/:product_id       |
-| Remove a product from wishlist       | PUT    | /wishlist/remove/:product_id    |
-| Add a product to cart                | PUT    | /cart/add/:product_id           |
-| Get all products in cart             | GET    | /cart                           |
-| Update product quantity in cart      | PUT    | /cart/update/:product_id        |
-| Remove a product from cart           | PUT    | /cart/remove/:product_id        |
-| Checkout                             | POST   | /checkout                       |
-| Create a ticket                      | POST   | /ticket/create                  |
-| Get all of my tickets                | GET    | /me/tickets                     |
-| Get one of my tickets                | GET    | /me/tickets/:ticket_id          |
-| Respond to a ticket                  | PUT    | /me/tickets/:ticket_id          |
-| Get all of my threads                | GET    | /threads/                       |
-| Get one of my threads                | GET    | /threads/:vendor_id             |
-| Send a message                       | POST   | /message/                       |
-| Get coupon value                     | GET    | /coupon/coupon_code             |
-| Get all active events of all vendors | GET    | /events                         |
-| Get all active events of a vendor    | GET    | /events/:vendor_id              |
-| Place an order                       | POST   | /order                          |
-| Return request                       | POST   | /return/:product_id             |
-| Log out                              | GET    | /logout                         |
+| User                               |        |                                 |
+| ---------------------------------- | ------ | ------------------------------- |
+| User sign up                       | POST   | /signup                         |
+| User log in                        | POST   | /login                          |
+| User profile                       | GET    | /me                             |
+| Get all products                   | GET    | /products                       |
+| Get all products of a shop         | GET    | /products/:shop_id              |
+| Get single product                 | GET    | /product/:product_id            |
+| Get all product reviews            | GET    | /product/reviews/:product_id    |
+| Write a product review             | POST   | /product/reviews/:product_id    |
+| Edit my product review             | PUT    | /me/product/reviews/:product_id |
+| Delete a product review            | DELETE | /product/reviews/:product_id    |
+| Get a single shop                  | GET    | /shop/:shop_id                  |
+| Get all reviews of a shop          | GET    | /shop/reviews/:shop_id          |
+| Write a shop review                | POST   | /shop/reviews/:shop_id          |
+| Edit my shop review                | PUT    | /me/shop/reviews/:shop_id       |
+| Delete a shop review               | DELETE | /shop/reviews/:shop_id          |
+| User profile                       | GET    | /me                             |
+| Update user profile                | PUT    | /me/update                      |
+| Get all of my orders               | GET    | /me/orders                      |
+| Get a single order                 | GET    | /me/order/:order_id             |
+| Place a new order                  | POST   | /me/order                       |
+| Cancel an order                    | PUT    | /me/order/:order_id             |
+| Add a product to wishlist          | PUT    | /wishlist/add/:product_id       |
+| Remove a product from wishlist     | PUT    | /wishlist/remove/:product_id    |
+| Add a product to cart              | PUT    | /cart/add/:product_id           |
+| Get all products in cart           | GET    | /cart                           |
+| Update product quantity in cart    | PUT    | /cart/update/:product_id        |
+| Remove a product from cart         | PUT    | /cart/remove/:product_id        |
+| Checkout                           | POST   | /checkout                       |
+| Create a ticket                    | POST   | /ticket/create                  |
+| Get all of my tickets              | GET    | /me/tickets                     |
+| Get one of my tickets              | GET    | /me/tickets/:ticket_id          |
+| Respond to a ticket                | PUT    | /me/tickets/:ticket_id          |
+| Get all of my threads              | GET    | /threads/                       |
+| Get one of my threads              | GET    | /threads/:vendor_id             |
+| Send a message                     | POST   | /message/                       |
+| Get coupon value                   | GET    | /coupon/coupon_code             |
+| Get all active events of all shops | GET    | /events                         |
+| Get all active events of a shop    | GET    | /events/:shop_id                |
+| Place an order                     | POST   | /order                          |
+| Return request                     | POST   | /return/:product_id             |
+| Log out                            | GET    | /logout                         |
