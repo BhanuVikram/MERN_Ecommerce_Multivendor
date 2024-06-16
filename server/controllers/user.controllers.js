@@ -1,4 +1,5 @@
 const User = require("../models/user.model.js");
+const getUsersByRole = require("../utils/getUsersByRole");
 
 // * SIGN UP
 
@@ -248,6 +249,29 @@ exports.updatePassword = async (req, res, next) => {
       success: true,
       user,
       message: "Password updated successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
+
+// * GET ALL USERS - ADMIN
+
+exports.getAllUsers = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    const allUsers = await getUsersByRole("user");
+    let totalNumberOfUsers = allUsers.length;
+
+    res.status(200).json({
+      success: true,
+      allUsers,
+      totalNumberOfUsers,
+      message: "Fetched all users successfully!",
     });
   } catch (error) {
     console.log(error);
