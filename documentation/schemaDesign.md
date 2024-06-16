@@ -28,7 +28,7 @@
 | Last Name            | String | Yes      |        |              |             |
 | Email                | String | Yes      | Yes    |              |             |
 | Phone Number         | Number | Yes      | Yes    |              |             |
-| Addresses            | Array  | Yes      |        |              |             |
+| Addresses            |        | Yes      |        |              |             |
 | Password             | String | Yes      |        |              |             |
 | Role                 | String |          |        | User         |             |
 | Created At           | Date   |          |        | Current Time |             |
@@ -44,14 +44,14 @@
 | Title              | String  | Yes      |        |              |             |
 | Category           | String  | Yes      |        |              |             |
 | Description        | String  | Yes      |        |              |             |
-| Image              |         | Yes      |        |              |             |
+| Images             |         | Yes      |        |              |             |
 | Price              | Number  | Yes      |        |              |             |
 | Total Quantity     | Number  | Yes      |        | 0            |             |
 | Quantity Sold      | Number  |          |        | 0            |             |
 | Quantity Remaining | Number  |          |        | 0            |             |
 | In Stock           | Boolean |          |        | false        |             |
 | Disabled           | Boolean |          |        | false        |             |
-| Reviews            | Array   |          |        |              |             |
+| Reviews            |         |          |        |              |             |
 | Ratings            | Number  |          |        |              |             |
 | Created By         | Object  |          |        |              | User Schema |
 | Created At         | Date    |          |        | Current time |             |
@@ -62,7 +62,7 @@
 
 | Key              | Type   | Required | Unique | Default      | Foreign Key |
 | ---------------- | ------ | -------- | ------ | ------------ | ----------- |
-| Cart             | Array  |          |        |              |             |
+| Cart             |        |          |        |              |             |
 | User             | Object |          |        |              | User Schema |
 | Shipping Address | Object | Yes      |        |              |             |
 | Total Price      | Number |          |        |              |             |
@@ -85,8 +85,8 @@
 | Start Date          | Date   | Yes      |        |              |                |
 | End Date            | Date   | Yes      |        |              |                |
 | Status              | String | Yes      |        |              |                |
-| Tags                | String |          |        |              |                |
-| Product ID          | Array  |          |        |              | Product Schema |
+| Tags                |        |          |        |              |                |
+| Product ID          |        |          |        |              | Product Schema |
 | Original Price      | Number | Yes      |        |              |                |
 | Discounted Price    | Number | Yes      |        |              |                |
 | Quantity Discounted | Number | Yes      |        | 0            |                |
@@ -106,7 +106,7 @@
 | Coupon Code             | String | Yes      | Yes    |              |                |
 | Minimum Purchase Amount | Number | Yes      |        | 0            |                |
 | Maximum Purchase Amount | Number | Yes      |        | 0            |                |
-| Selected Products       | Array  | Yes      |        |              | Product Schema |
+| Selected Products       |        | Yes      |        |              | Product Schema |
 | Coupon Quantity         | Number | Yes      |        |              |                |
 | Created By              | Object |          |        |              | User Schema    |
 | Created At              | Date   |          |        | Current Time |                |
@@ -121,7 +121,7 @@
 | Name                        | String | Yes      | Yes    |              |                 |
 | Description                 | String | Yes      |        |              |                 |
 | Email                       | String | Yes      | Yes    |              |                 |
-| Address                     | Array  | Yes      |        |              |                 |
+| Address                     |        | Yes      |        |              |                 |
 | Identity Verification       |        | Yes      |        |              |                 |
 | Business Verification       |        | Yes      |        |              |                 |
 | Address Verification        |        | Yes      |        |              |                 |
@@ -131,7 +131,7 @@
 | Withdrawals                 | Object |          |        |              | Withdraw Schema |
 | Total Amount Withdrawn      | Number |          |        | 0            |                 |
 | Total Number of Withdrawals | Number |          |        | 0            |                 |
-| Reviews                     | Array  |          |        |              |                 |
+| Reviews                     |        |          |        |              |                 |
 | Ratings                     | Number |          |        |              |                 |
 | Created At                  | Date   |          |        | Current Time |                 |
 
