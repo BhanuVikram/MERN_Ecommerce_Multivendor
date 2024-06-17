@@ -12,6 +12,7 @@ const {
 const {
   signUp,
   signIn,
+  signOut,
   myProfile,
   updatePhone,
   updateAddress,
@@ -26,6 +27,7 @@ const router = express.Router();
 
 router.route("/signup").post(signUp);
 router.route("/signin").post(signIn);
+router.route("/signout").get(isAuthenticated, signOut);
 router.route("/me").get(isAuthenticated, myProfile);
 router.route("/updatephone/?:_id").put(isAuthenticated, updatePhone);
 router.route("/updateaddress/?:_id").put(isAuthenticated, updateAddress);
