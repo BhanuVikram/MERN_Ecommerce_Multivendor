@@ -37,7 +37,6 @@
 | Respond to a ticket                   | PUT  | /agent/tickets/:ticket_id       |
 | Update a ticket                       | PUT  | /agent/tickets/:ticket_id       |
 | Update vendor status                  | PUT  | /agent/vendor/:vendor_id        |
-| Get all vendors                       | GET  | /agent/vendors                  |
 | Get all customer orders of a vendor   | GET  | /agent/orders/vendor/:vendor_id |
 | Get all customer orders of a customer | GET  | /agent/orders/user/:user_id     |
 | Get selected orders                   | GET  | /agent/orders/:order_id         |

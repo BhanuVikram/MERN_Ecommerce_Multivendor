@@ -16,7 +16,7 @@
 
 <br>
 
-![Schema Design](<./assets/Schema Design.png>)
+![Schema Design](<./assets/Schema Design.jpeg>)
 
 <br>
 

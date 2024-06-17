@@ -79,7 +79,7 @@ exports.getSingleProduct = async (req, res, next) => {
   }
 };
 
-// * UPDATE A PRODUCT - VENDOR
+// * UPDATE A PRODUCT - ADMIN, VENDOR
 
 exports.updateProduct = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -113,3 +113,4 @@ exports.updateProduct = async (req, res, next) => {
     });
   }
 };
+
