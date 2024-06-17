@@ -294,3 +294,26 @@ exports.getAllUsers = async (req, res, next) => {
     });
   }
 };
+
+// * GET ALL AGENTS - ADMIN
+
+exports.getAllAgents = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    const allAgents = await getUsersByRole("agent");
+    let totalNumberOfAgents = allAgents.length;
+
+    res.status(200).json({
+      success: true,
+      allAgents,
+      totalNumberOfAgents,
+      message: "Fetched all agents successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
