@@ -20,6 +20,7 @@ const {
   updatePassword,
   getAllUsers,
   getAllAgents,
+  getAllVendors,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -38,5 +39,8 @@ router.route("/users").get(isAuthenticated, isAuthorized("admin"), getAllUsers);
 router
   .route("/agents")
   .get(isAuthenticated, isAuthorized("admin"), getAllAgents);
+router
+  .route("/vendors")
+  .get(isAuthenticated, isAuthorized("admin"), getAllVendors);
 
 module.exports = router;

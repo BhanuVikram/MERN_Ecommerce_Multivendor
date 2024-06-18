@@ -317,3 +317,26 @@ exports.getAllAgents = async (req, res, next) => {
     });
   }
 };
+
+// * GET ALL VENDORS - ADMIN
+
+exports.getAllVendors = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    const allVendors = await getUsersByRole("vendor");
+    let totalNumberOfVendors = allVendors.length;
+
+    res.status(200).json({
+      success: true,
+      allVendors,
+      totalNumberOfVendors,
+      message: "Fetched all vendors successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
