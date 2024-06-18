@@ -340,3 +340,29 @@ exports.getAllVendors = async (req, res, next) => {
     });
   }
 };
+
+// * GET A SINGLE USER - ADMIN
+
+exports.getSingleUser = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleUser = await User.findById(req.params._id);
+    if (!singleUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found!",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      singleUser,
+      message: "Fetched the user successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
