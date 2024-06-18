@@ -37,7 +37,9 @@ router.route("/updatephone/?:_id").put(isAuthenticated, updatePhone);
 router.route("/updateaddress/?:_id").put(isAuthenticated, updateAddress);
 router.route("/addaddress/?:_id").put(isAuthenticated, addAddress);
 router.route("/updatepassword/?:_id").put(isAuthenticated, updatePassword);
-router.route("/users").get(isAuthenticated, isAuthorized("admin"), getAllUsers);
+router
+  .route("/users")
+  .get(isAuthenticated, isAuthorized("admin", "agent"), getAllUsers);
 router
   .route("/agents")
   .get(isAuthenticated, isAuthorized("admin"), getAllAgents);

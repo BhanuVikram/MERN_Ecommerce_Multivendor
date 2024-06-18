@@ -341,7 +341,7 @@ exports.getAllVendors = async (req, res, next) => {
   }
 };
 
-// * GET A SINGLE USER - ADMIN
+// * GET A SINGLE USER - ADMIN, AGENT
 
 exports.getSingleUser = async (req, res, next) => {
   res.header("Content-Type", "application/json");
