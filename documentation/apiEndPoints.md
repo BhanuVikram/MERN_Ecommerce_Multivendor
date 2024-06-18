@@ -2,73 +2,77 @@
 
 <br>
 
-| Admin                                 |      |                                 |
-| ------------------------------------- | ---- | ------------------------------- |
-| Admin log in                          | POST | /admin/login                    |
-| Get all tickets                       | GET  | /admin/tickets                  |
-| Get a ticket                          | GET  | /admin/tickets/:ticket_id       |
-| Respond to a ticket                   | PUT  | /admin/tickets/:ticket_id       |
-| Update a ticket                       | PUT  | /admin/tickets/:ticket_id       |
-| Get all threads                       | GET  | /admin/threads/                 |
-| Get a single thread                   | GET  | /admin/threads/:user_id         |
-| Get all users                         | GET  | /admin/users                    |
-| Get a single user                     | GET  | /admin/users/:user_id           |
-| Get all agents                        | GET  | /admin/agents                   |
-| Get a single agent                    | GET  | /admin/agents/:agent_id         |
-| Get all vendors                       | GET  | /admin/vendors                  |
-| Get a single vendor                   | GET  | /admin/vendors/:vendor_id       |
-| Update vendor status                  | PUT  | /admin/vendor/:vendor_id        |
-| Get all orders                        | GET  | /admin/orders                   |
-| Get a single order                    | GET  | /admin/orders/:order_id         |
-| Get all customer orders of a vendor   | GET  | /admin/orders/vendor/:vendor_id |
-| Get all customer orders of a customer | GET  | /admin/orders/user/:user_id     |
-| Update an order                       | PUT  | /admin/orders/:order_id         |
-| Get all events                        | GET  | /admin/events                   |
-| Get all events of a vendor            | GET  | /admin/events/:vendor_id        |
-| Dashboard                             | GET  | /admin/dashboard                |
+| Admin                           |      |                                 |
+| ------------------------------- | ---- | ------------------------------- |
+| Admin log in                    | POST | /admin/login                    |
+| Get all tickets                 | GET  | /admin/tickets                  |
+| Get a ticket                    | GET  | /admin/tickets/:ticket_id       |
+| Respond to a ticket             | PUT  | /admin/tickets/:ticket_id       |
+| Update a ticket                 | PUT  | /admin/tickets/:ticket_id       |
+| Get all threads                 | GET  | /admin/threads/                 |
+| Get a single thread             | GET  | /admin/threads/:user_id         |
+| Get all users                   | GET  | /admin/users                    |
+| Get a single user               | GET  | /admin/users/:user_id           |
+| Get all agents                  | GET  | /admin/agents                   |
+| Get a single agent              | GET  | /admin/agents/:agent_id         |
+| Get all vendors                 | GET  | /admin/vendors                  |
+| Get a single vendor             | GET  | /admin/vendors/:vendor_id       |
+| Update vendor status            | PUT  | /admin/vendor/:vendor_id        |
+| Get all orders                  | GET  | /admin/orders                   |
+| Get a single order              | GET  | /admin/orders/:order_id         |
+| Get all user orders of a vendor | GET  | /admin/orders/vendor/:vendor_id |
+| Get all user orders of a user   | GET  | /admin/orders/user/:user_id     |
+| Update an order                 | PUT  | /admin/orders/:order_id         |
+| Get all events                  | GET  | /admin/events                   |
+| Get all events of a vendor      | GET  | /admin/events/:vendor_id        |
+| Dashboard                       | GET  | /admin/dashboard                |
 
 <br>
 
-| Agent                                 |      |                                 |
-| ------------------------------------- | ---- | ------------------------------- |
-| Agent log in                          | POST | /agent/login                    |
-| Get all tickets                       | GET  | /agent/tickets                  |
-| Get a ticket                          | GET  | /agent/tickets/:ticket_id       |
-| Respond to a ticket                   | PUT  | /agent/tickets/:ticket_id       |
-| Update a ticket                       | PUT  | /agent/tickets/:ticket_id       |
-| Update vendor status                  | PUT  | /agent/vendor/:vendor_id        |
-| Get all customer orders of a vendor   | GET  | /agent/orders/vendor/:vendor_id |
-| Get all customer orders of a customer | GET  | /agent/orders/user/:user_id     |
-| Get selected orders                   | GET  | /agent/orders/:order_id         |
-| Update an order                       | PUT  | /agent/orders/:order_id         |
-| Get all events                        | GET  | /agent/events                   |
-| Get all events of a vendor            | GET  | /agent/events/:vendor_id        |
-| Dashboard                             | GET  | /agent/dashboard                |
+| Agent                           |      |                                 |
+| ------------------------------- | ---- | ------------------------------- |
+| Agent log in                    | POST | /agent/login                    |
+| Get all tickets                 | GET  | /agent/tickets                  |
+| Get a ticket                    | GET  | /agent/tickets/:ticket_id       |
+| Respond to a ticket             | PUT  | /agent/tickets/:ticket_id       |
+| Update a ticket                 | PUT  | /agent/tickets/:ticket_id       |
+| Update vendor status            | PUT  | /agent/vendor/:vendor_id        |
+| Get a single vendor             | GET  | /agent/vendors/:vendor_id       |
+| Get all user orders of a vendor | GET  | /agent/orders/vendor/:vendor_id |
+| Get a single user               | GET  | /agent/users/:user_id           |
+| Get all user orders of a user   | GET  | /agent/orders/user/:user_id     |
+| Get selected orders             | GET  | /agent/orders/:order_id         |
+| Update an order                 | PUT  | /agent/orders/:order_id         |
+| Get all events                  | GET  | /agent/events                   |
+| Get all events of a vendor      | GET  | /agent/events/:vendor_id        |
+| Dashboard                       | GET  | /agent/dashboard                |
 
 <br>
 
-| Vendor                       |      |                            |
-| ---------------------------- | ---- | -------------------------- |
-| Vendor sign up               | POST | /vendor/signup             |
-| Vendor log in                | POST | /vendor/login              |
-| Create a product             | POST | /vendor/createproduct      |
-| Update a product             | PUT  | /vendor/updateproduct      |
-| Get all orders               | GET  | /vendor/orders             |
-| Get all orders of a customer | GET  | /vendor/orders/:user_id    |
-| Update an order              | PUT  | /vendor/orders/:order_id   |
-| Get all threads              | GET  | /vendor/threads/           |
-| Get a single thread          | GET  | /vendor/threads/:user_id   |
-| Create a coupon code         | POST | /vendor/coupon             |
-| Get all coupons              | GET  | /vendor/coupons            |
-| Update a coupon              | PUT  | /vendor/coupon/:coupon_id  |
-| Get all of my events         | GET  | /vendor/events             |
-| Create an event              | POST | /vendor/event              |
-| Update an event              | PUT  | /vendor/event/:event_id    |
-| Issue a refund               | PUT  | /vendor/refund/:product_id |
-| Update shop profile          | PUT  | /vendor/shop/update        |
-| Withdrawal history           | GET  | /vendor/withdrawals        |
-| Withdraw funds               | POST | /vendor/withdraw           |
-| Dashboard                    | GET  | /vendor/dashboard          |
+| Vendor                   |      |                            |
+| ------------------------ | ---- | -------------------------- |
+| Vendor sign up           | POST | /vendor/signup             |
+| Vendor log in            | POST | /vendor/login              |
+| Create a product         | POST | /vendor/createproduct      |
+| Update a product         | PUT  | /vendor/updateproduct      |
+| Get all orders           | GET  | /vendor/orders             |
+| Get all orders of a user | GET  | /vendor/orders/:user_id    |
+| Update an order          | PUT  | /vendor/orders/:order_id   |
+| Get all threads          | GET  | /vendor/threads/           |
+| Get a single thread      | GET  | /vendor/threads/:user_id   |
+| Create a coupon code     | POST | /vendor/coupon             |
+| Get all coupons          | GET  | /vendor/coupons            |
+| Update a coupon          | PUT  | /vendor/coupon/:coupon_id  |
+| Get all of my events     | GET  | /vendor/events             |
+| Create an event          | POST | /vendor/event              |
+| Update an event          | PUT  | /vendor/event/:event_id    |
+| Get a single user        | GET  | /vendor/users/:user_id     |
+| Get a single agent       | GET  | /vendor/agents/:agent_id   |
+| Issue a refund           | PUT  | /vendor/refund/:product_id |
+| Update shop profile      | PUT  | /vendor/shop/update        |
+| Withdrawal history       | GET  | /vendor/withdrawals        |
+| Withdraw funds           | POST | /vendor/withdraw           |
+| Dashboard                | GET  | /vendor/dashboard          |
 
 <br>
 
