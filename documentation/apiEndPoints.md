@@ -2,43 +2,47 @@
 
 <br>
 
-| Admin                      |      |                                 |
-| -------------------------- | ---- | ------------------------------- |
-| Admin log in               | POST | /admin/login                    |
-| Get all tickets            | GET  | /admin/tickets                  |
-| Get a ticket               | GET  | /admin/tickets/:ticket_id       |
-| Respond to a ticket        | PUT  | /admin/tickets/:ticket_id       |
-| Update a ticket            | PUT  | /admin/tickets/:ticket_id       |
-| Get all threads            | GET  | /admin/threads/                 |
-| Get a single thread        | GET  | /admin/thread/:user_id          |
-| Get all users              | GET  | /admin/users                    |
-| Get a single user          | GET  | /admin/user/:user_id            |
-| Get all agents             | GET  | /admin/agents                   |
-| Get a single agent         | GET  | /admin/agent/:agent_id          |
-| Get all vendors            | GET  | /admin/vendors                  |
-| Get a single vendor        | GET  | /admin/vendor/:vendor_id        |
-| Update vendor status       | PUT  | /admin/vendor/:vendor_id        |
-| Get all orders             | GET  | /admin/orders                   |
-| Get a single order         | GET  | /admin/order/:order_id          |
-| Get all orders of a vendor | GET  | /admin/orders/vendor/:vendor_id |
-| Get all orders of a user   | GET  | /admin/orders/user/:user_id     |
-| Update an order            | PUT  | /admin/orders/:order_id         |
-| Get all events             | GET  | /admin/events                   |
-| Get all events of a vendor | GET  | /admin/events/:vendor_id        |
-| Get all coupons            | GET  | /admin/coupons                  |
-| Create a coupon            | POST | /admin/coupon                   |
-| Update a coupon            | PUT  | /admin/coupon/:coupon_id        |
-| Dashboard                  | GET  | /admin/dashboard                |
+| Admin                                   |      |                                 |
+| --------------------------------------- | ---- | ------------------------------- |
+| Admin log in                            | POST | /admin/login                    |
+| Update own profile                      | PUT  | /me/profile                     |
+| Get all tickets                         | GET  | /admin/tickets                  |
+| Get a ticket                            | GET  | /admin/tickets/:ticket_id       |
+| Respond to a ticket                     | PUT  | /admin/tickets/:ticket_id       |
+| Update a ticket                         | PUT  | /admin/tickets/:ticket_id       |
+| Get all threads                         | GET  | /admin/threads/                 |
+| Get a single thread                     | GET  | /admin/thread/:user_id          |
+| Get all users                           | GET  | /admin/users                    |
+| Get all disabled users                  | GET  | /admin/user/disabled/:user_id   |
+| Get a single user                       | GET  | /admin/user/:user_id            |
+| Get all agents                          | GET  | /admin/agents                   |
+| Get all disabled agent                  | GET  | /admin/user/disabled/:agent_id  |
+| Get a single agent                      | GET  | /admin/agent/:agent_id          |
+| Get all vendors                         | GET  | /admin/vendors                  |
+| Get all disabled vendors                | GET  | /admin/user/disabled/:vendor_id |
+| Get a single vendor                     | GET  | /admin/vendor/:vendor_id        |
+| Change agent, vendor, user role         | PUT  | /admin/role/:user_id            |
+| Update agent, vendor, shop, user status | PUT  | /admin/status/:user_id          |
+| Get all orders                          | GET  | /admin/orders                   |
+| Get a single order                      | GET  | /admin/order/:order_id          |
+| Get all orders of a vendor              | GET  | /admin/orders/vendor/:vendor_id |
+| Get all orders of a user                | GET  | /admin/orders/user/:user_id     |
+| Update an order                         | PUT  | /admin/orders/:order_id         |
+| Get all events                          | GET  | /admin/events                   |
+| Get all events of a vendor              | GET  | /admin/events/:vendor_id        |
+| Get all coupons                         | GET  | /admin/coupons                  |
+| Create a coupon                         | POST | /admin/coupon                   |
+| Update a coupon                         | PUT  | /admin/coupon/:coupon_id        |
+| Dashboard                               | GET  | /admin/dashboard                |
 
 <br>
 
 | Agent                           |      |                                 |
 | ------------------------------- | ---- | ------------------------------- |
 | Agent log in                    | POST | /agent/login                    |
-| Get all tickets                 | GET  | /agent/tickets                  |
-| Get a ticket                    | GET  | /agent/tickets/:ticket_id       |
-| Respond to a ticket             | PUT  | /agent/tickets/:ticket_id       |
-| Update a ticket                 | PUT  | /agent/tickets/:ticket_id       |
+| Update own profile              | PUT  | /me/profile                     |
+| Disable own status              | PUT  | /me/status                      |
+| Update user status              | PUT  | /agent/user/:user_id            |
 | Update vendor status            | PUT  | /agent/vendor/:vendor_id        |
 | Get a single vendor             | GET  | /agent/vendor/:vendor_id        |
 | Get all user orders of a vendor | GET  | /agent/orders/vendor/:vendor_id |
@@ -46,6 +50,10 @@
 | Get all user orders of a user   | GET  | /agent/orders/user/:user_id     |
 | Get a single order              | GET  | /agent/orders/:order_id         |
 | Update an order                 | PUT  | /agent/orders/:order_id         |
+| Get all tickets                 | GET  | /agent/tickets                  |
+| Get a ticket                    | GET  | /agent/tickets/:ticket_id       |
+| Respond to a ticket             | PUT  | /agent/tickets/:ticket_id       |
+| Update a ticket                 | PUT  | /agent/tickets/:ticket_id       |
 | Get all events                  | GET  | /agent/events                   |
 | Get all events of a vendor      | GET  | /agent/events/:vendor_id        |
 | Dashboard                       | GET  | /agent/dashboard                |
@@ -56,6 +64,12 @@
 | ------------------------ | ---- | -------------------------- |
 | Vendor sign up           | POST | /vendor/signup             |
 | Vendor log in            | POST | /vendor/login              |
+| Update own profile       | PUT  | /me/profile                |
+| Update own status        | PUT  | /me/status                 |
+| Create a shop            | POST | /vendor/createshop         |
+| Get my shop              | GET  | /me/shop/                  |
+| Update shop profile      | PUT  | /me/shop/profile           |
+| Update shop status       | PUT  | /me/shop/status            |
 | Create a product         | POST | /vendor/createproduct      |
 | Update a product         | PUT  | /vendor/updateproduct      |
 | Get all orders           | GET  | /vendor/orders             |
@@ -72,7 +86,6 @@
 | Get a single user        | GET  | /vendor/user/:user_id      |
 | Get a single agent       | GET  | /vendor/agent/:agent_id    |
 | Issue a refund           | PUT  | /vendor/refund/:product_id |
-| Update shop profile      | PUT  | /vendor/shop/update        |
 | Withdrawal history       | GET  | /vendor/withdrawals        |
 | Withdraw funds           | POST | /vendor/withdraw           |
 | Dashboard                | GET  | /vendor/dashboard          |
@@ -97,7 +110,8 @@
 | Edit my shop review                | PUT  | /me/shop/reviews/:shop_id       |
 | Delete a shop review               | PUT  | /shop/reviews/:shop_id          |
 | User profile                       | GET  | /me                             |
-| Update user profile                | PUT  | /me/update                      |
+| Update own profile                 | PUT  | /me/profile                     |
+| Update own status                  | PUT  | /me/status                      |
 | Get all of my orders               | GET  | /me/orders                      |
 | Get a single order                 | GET  | /me/order/:order_id             |
 | Place an order                     | POST | /me/order                       |
