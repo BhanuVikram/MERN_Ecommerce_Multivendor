@@ -1,4 +1,4 @@
-### API End Points
+### API Endpoints
 
 <br>
 
