@@ -422,3 +422,26 @@ exports.getAllDisabledAgents = async (req, res, next) => {
     });
   }
 };
+
+// * GET ALL DISABLED VENDORS - ADMIN
+
+exports.getAllDisabledVendors = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    const allDisabledVendors = await getAllDisabledByRole("vendor");
+    let totalNumberOfDisabledVendors = allDisabledVendors.length;
+
+    res.status(200).json({
+      success: true,
+      allDisabledVendors,
+      totalNumberOfDisabledVendors,
+      message: "Fetched all disabled vendors successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};

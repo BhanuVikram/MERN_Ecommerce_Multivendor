@@ -24,6 +24,7 @@ const {
   getSingleUser,
   getSingleUserForVendor,
   getAllDisabledAgents,
+  getAllDisabledVendors,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -56,5 +57,8 @@ router
 router
   .route("/disabled/agents/")
   .get(isAuthenticated, isAuthorized("admin"), getAllDisabledAgents);
+router
+  .route("/disabled/vendors/")
+  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledVendors);
 
 module.exports = router;
