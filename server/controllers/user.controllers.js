@@ -1,5 +1,6 @@
 const User = require("../models/user.model.js");
 const getUsersByRole = require("../utils/getUsersByRole");
+const getAllDisabledByRole = require("../utils/getAllDisabledByRole");
 
 // * SIGN UP
 
@@ -272,29 +273,6 @@ exports.updatePassword = async (req, res, next) => {
   }
 };
 
-// * GET ALL USERS - ADMIN
-
-exports.getAllUsers = async (req, res, next) => {
-  res.header("Content-Type", "application/json");
-  try {
-    const allUsers = await getUsersByRole("user");
-    let totalNumberOfUsers = allUsers.length;
-
-    res.status(200).json({
-      success: true,
-      allUsers,
-      totalNumberOfUsers,
-      message: "Fetched all users successfully!",
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      succes: false,
-      message: `Error ${error.message}`,
-    });
-  }
-};
-
 // * GET ALL AGENTS - ADMIN
 
 exports.getAllAgents = async (req, res, next) => {
@@ -341,7 +319,30 @@ exports.getAllVendors = async (req, res, next) => {
   }
 };
 
-// * GET A SINGLE USER - ADMIN, AGENT
+// * GET ALL USERS - ADMIN
+
+exports.getAllUsers = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    const allUsers = await getUsersByRole("user");
+    let totalNumberOfUsers = allUsers.length;
+
+    res.status(200).json({
+      success: true,
+      allUsers,
+      totalNumberOfUsers,
+      message: "Fetched all users successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
+
+// * GET A SINGLE AGENT / VENDOR / USER - ADMIN, AGENT
 
 exports.getSingleUser = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -356,7 +357,7 @@ exports.getSingleUser = async (req, res, next) => {
     res.status(200).json({
       success: true,
       singleUser,
-      message: "Fetched the user successfully!",
+      message: "Fetched user successfully!",
     });
   } catch (error) {
     console.log(error);
@@ -389,6 +390,29 @@ exports.getSingleUserForVendor = async (req, res, next) => {
       success: true,
       redactedUserData,
       message: "Fetched the user successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
+
+// * GET ALL DISABLED AGENTS - ADMIN
+
+exports.getAllDisabledAgents = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    const allDisabledAgents = await getAllDisabledByRole("agent");
+    let totalNumberOfDisabledAgents = allDisabledAgents.length;
+
+    res.status(200).json({
+      success: true,
+      allDisabledAgents,
+      totalNumberOfDisabledAgents,
+      message: "Fetched all disabled agents successfully!",
     });
   } catch (error) {
     console.log(error);

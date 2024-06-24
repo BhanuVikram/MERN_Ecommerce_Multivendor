@@ -23,6 +23,7 @@ const {
   getAllVendors,
   getSingleUser,
   getSingleUserForVendor,
+  getAllDisabledAgents,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -38,19 +39,22 @@ router.route("/updateaddress/?:_id").put(isAuthenticated, updateAddress);
 router.route("/addaddress/?:_id").put(isAuthenticated, addAddress);
 router.route("/updatepassword/?:_id").put(isAuthenticated, updatePassword);
 router
-  .route("/users")
-  .get(isAuthenticated, isAuthorized("admin", "agent"), getAllUsers);
-router
   .route("/agents")
   .get(isAuthenticated, isAuthorized("admin"), getAllAgents);
 router
   .route("/vendors")
   .get(isAuthenticated, isAuthorized("admin"), getAllVendors);
 router
+  .route("/users")
+  .get(isAuthenticated, isAuthorized("admin", "agent"), getAllUsers);
+router
   .route("/user/:_id")
   .get(isAuthenticated, isAuthorized("admin"), getSingleUser);
 router
   .route("/vendor/user/:_id")
   .get(isAuthenticated, isAuthorized("vendor"), getSingleUserForVendor);
+router
+  .route("/disabled/agents/")
+  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledAgents);
 
 module.exports = router;
