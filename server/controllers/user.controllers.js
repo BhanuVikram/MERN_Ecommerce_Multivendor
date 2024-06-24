@@ -445,3 +445,26 @@ exports.getAllDisabledVendors = async (req, res, next) => {
     });
   }
 };
+
+// * GET ALL DISABLED USERS - ADMIN
+
+exports.getAllDisabledUsers = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    const allDisabledUsers = await getAllDisabledByRole("user");
+    let totalNumberOfDisabledUsers = allDisabledUsers.length;
+
+    res.status(200).json({
+      success: true,
+      allDisabledUsers,
+      totalNumberOfDisabledUsers,
+      message: "Fetched all disabled users successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
