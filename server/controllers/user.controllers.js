@@ -342,7 +342,7 @@ exports.getAllUsers = async (req, res, next) => {
   }
 };
 
-// * GET A SINGLE AGENT / VENDOR / USER - ADMIN, AGENT
+// * GET A SINGLE VENDOR, USER - ADMIN, AGENT
 
 exports.getSingleUser = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -368,7 +368,7 @@ exports.getSingleUser = async (req, res, next) => {
   }
 };
 
-// * GET A SINGLE USER - VENDOR
+// * GET A SINGLE REDACTED USER - VENDOR
 
 exports.getSingleUserForVendor = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -494,7 +494,7 @@ exports.enableUser = async (req, res, next) => {
     } else {
       res.status(400).json({
         success: false,
-        message: "User is already enabled."
+        message: "User is already enabled.",
       });
     }
   } catch (error) {
