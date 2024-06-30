@@ -26,6 +26,7 @@ const {
   getAllDisabledAgents,
   getAllDisabledVendors,
   getAllDisabledUsers,
+  enableUser,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -64,5 +65,8 @@ router
 router
   .route("/disabled/users/")
   .get(isAuthenticated, isAuthorized("admin"), getAllDisabledUsers);
+router
+  .route("/enable/:_id")
+  .get(isAuthenticated, isAuthorized("admin"), enableUser);
 
 module.exports = router;

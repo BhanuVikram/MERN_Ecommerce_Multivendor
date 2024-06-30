@@ -468,3 +468,40 @@ exports.getAllDisabledUsers = async (req, res, next) => {
     });
   }
 };
+
+// * ENABLE AGENT, VENDOR, OR USER STATUS - ADMIN
+
+exports.enableUser = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleUser = await User.findById(req.params._id);
+    if (!singleUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found!",
+      });
+    }
+
+    if (singleUser.status === false) {
+      singleUser.status = true;
+      singleUser.save();
+
+      res.status(200).json({
+        success: true,
+        singleUser,
+        message: "User enabled successfully!",
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: "User is already enabled."
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
