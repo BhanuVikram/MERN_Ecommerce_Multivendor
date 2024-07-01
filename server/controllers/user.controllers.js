@@ -105,7 +105,7 @@ exports.signOut = async (req, res, next) => {
   });
 };
 
-// * MY PROFILE
+// * MY PROFILE – ADMIN, AGENT, VENDOR, USER
 
 exports.myProfile = async (req, res, next) => {
   try {
@@ -127,7 +127,7 @@ exports.myProfile = async (req, res, next) => {
   }
 };
 
-// * UPDATE PHONE NUMBER
+// * UPDATE PHONE NUMBER – ADMIN, AGENT, VENDOR, USER
 
 exports.updatePhone = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -159,7 +159,7 @@ exports.updatePhone = async (req, res, next) => {
   }
 };
 
-// * UPDATE ADDRESS
+// * UPDATE ADDRESS – ADMIN, AGENT, VENDOR, USER
 
 exports.updateAddress = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -191,7 +191,7 @@ exports.updateAddress = async (req, res, next) => {
   }
 };
 
-// * ADD ADDRESS
+// * ADD ADDRESS – ADMIN, AGENT, VENDOR, USER
 
 exports.addAddress = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -230,7 +230,7 @@ exports.addAddress = async (req, res, next) => {
   }
 };
 
-// * UPDATE PASSWORD
+// * UPDATE PASSWORD – ADMIN, AGENT, VENDOR, USER
 
 exports.updatePassword = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -342,9 +342,9 @@ exports.getAllUsers = async (req, res, next) => {
   }
 };
 
-// * GET A SINGLE VENDOR, USER - ADMIN, AGENT
+// * GET A SINGLE AGENT, VENDOR, USER - ADMIN
 
-exports.getSingleUser = async (req, res, next) => {
+exports.getSingleUserByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     let singleUser = await User.findById(req.params._id);
@@ -370,7 +370,7 @@ exports.getSingleUser = async (req, res, next) => {
 
 // * GET A SINGLE REDACTED USER - VENDOR
 
-exports.getSingleUserForVendor = async (req, res, next) => {
+exports.getRedactedUserByVendor = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     let singleUser = await User.findById(req.params._id);
