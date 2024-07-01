@@ -42,29 +42,31 @@ router.route("/updateaddress/?:_id").put(isAuthenticated, updateAddress);
 router.route("/addaddress/?:_id").put(isAuthenticated, addAddress);
 router.route("/updatepassword/?:_id").put(isAuthenticated, updatePassword);
 router
-  .route("/agents")
+  .route("/admin/agents")
   .get(isAuthenticated, isAuthorized("admin"), getAllAgents);
 router
-  .route("/vendors")
+  .route("/admin/vendors")
   .get(isAuthenticated, isAuthorized("admin"), getAllVendors);
-router.route("/users").get(isAuthenticated, isAuthorized("admin"), getAllUsers);
 router
-  .route("/user/:_id")
+  .route("/admin/users")
+  .get(isAuthenticated, isAuthorized("admin"), getAllUsers);
+router
+  .route("/admin/single-agent-vendor-user/:_id")
   .get(isAuthenticated, isAuthorized("admin"), getSingleUserByAdmin);
 router
   .route("/vendor/user/:_id")
   .get(isAuthenticated, isAuthorized("vendor"), getRedactedUserByVendor);
 router
-  .route("/disabled/agents/")
+  .route("/admin/disabled/agents/")
   .get(isAuthenticated, isAuthorized("admin"), getAllDisabledAgents);
 router
-  .route("/disabled/vendors/")
+  .route("/admin/disabled/vendors/")
   .get(isAuthenticated, isAuthorized("admin"), getAllDisabledVendors);
 router
-  .route("/disabled/users/")
+  .route("/admin/disabled/users/")
   .get(isAuthenticated, isAuthorized("admin"), getAllDisabledUsers);
 router
-  .route("/enable/:_id")
+  .route("/admin/enable/:_id")
   .get(isAuthenticated, isAuthorized("admin"), enableUser);
 
 module.exports = router;
