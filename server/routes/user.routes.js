@@ -22,6 +22,7 @@ const {
   getAllAgents,
   getAllVendors,
   getSingleUserByAdmin,
+  getVendorOrUserByAgent,
   getRedactedUserByVendor,
   getAllDisabledAgents,
   getAllDisabledVendors,
@@ -53,6 +54,9 @@ router
 router
   .route("/admin/single-agent-vendor-user/:_id")
   .get(isAuthenticated, isAuthorized("admin"), getSingleUserByAdmin);
+router
+  .route("/agent/vendor-User/:_id")
+  .get(isAuthenticated, isAuthorized("agent"), getVendorOrUserByAgent);
 router
   .route("/vendor/user/:_id")
   .get(isAuthenticated, isAuthorized("vendor"), getRedactedUserByVendor);
