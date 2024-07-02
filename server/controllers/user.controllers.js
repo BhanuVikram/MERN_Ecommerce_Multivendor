@@ -400,6 +400,43 @@ exports.getVendorOrUserByAgent = async (req, res, next) => {
   }
 };
 
+// * GET A SINGLE REDACTED ADMIN – AGENT
+
+exports.getRedactedAdminByAgent = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleAdmin = await User.findById(req.params._id);
+    if (!singleAdmin) {
+      return res.status(404).json({
+        success: false,
+        message: "Admin not found!",
+      });
+    } else if (singleAdmin.role !== "admin") {
+      return res.status(401).json({
+        success: false,
+        message: "This admin does not exist.",
+      });
+    }
+
+    let redactedAdminData = {};
+
+    redactedAdminData.firstname = singleAdmin.firstname;
+    redactedAdminData.lastname = singleAdmin.lastname;
+
+    res.status(200).json({
+      success: true,
+      redactedAdminData,
+      message: "Fetched the admin successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
+
 // * GET A SINGLE REDACTED USER - VENDOR
 
 exports.getRedactedUserByVendor = async (req, res, next) => {
