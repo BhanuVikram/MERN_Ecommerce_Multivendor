@@ -370,7 +370,7 @@ exports.getSingleUserByAdmin = async (req, res, next) => {
 
 // * GET A SINGLE VENDOR, USER – AGENT
 
-exports.getVendorOrUserByAgent = async (req, res, next) => {
+exports.getVendorUserByAgent = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     let singleUser = await User.findById(req.params._id);
