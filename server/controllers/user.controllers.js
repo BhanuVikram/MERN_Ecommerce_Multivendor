@@ -275,7 +275,7 @@ exports.updatePassword = async (req, res, next) => {
 
 // * GET ALL AGENTS - ADMIN
 
-exports.getAllAgents = async (req, res, next) => {
+exports.getAllAgentsByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     const allAgents = await getUsersByRole("agent");
@@ -298,7 +298,7 @@ exports.getAllAgents = async (req, res, next) => {
 
 // * GET ALL VENDORS - ADMIN
 
-exports.getAllVendors = async (req, res, next) => {
+exports.getAllVendorsByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     const allVendors = await getUsersByRole("vendor");
@@ -321,7 +321,7 @@ exports.getAllVendors = async (req, res, next) => {
 
 // * GET ALL USERS - ADMIN
 
-exports.getAllUsers = async (req, res, next) => {
+exports.getAllUsersByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     const allUsers = await getUsersByRole("user");
@@ -545,7 +545,7 @@ exports.getRedactedUserByVendor = async (req, res, next) => {
 
 // * GET ALL DISABLED AGENTS - ADMIN
 
-exports.getAllDisabledAgents = async (req, res, next) => {
+exports.getAllDisabledAgentsByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     const allDisabledAgents = await getAllDisabledByRole("agent");
@@ -568,7 +568,7 @@ exports.getAllDisabledAgents = async (req, res, next) => {
 
 // * GET ALL DISABLED VENDORS - ADMIN
 
-exports.getAllDisabledVendors = async (req, res, next) => {
+exports.getAllDisabledVendorsByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     const allDisabledVendors = await getAllDisabledByRole("vendor");
@@ -591,7 +591,7 @@ exports.getAllDisabledVendors = async (req, res, next) => {
 
 // * GET ALL DISABLED USERS - ADMIN
 
-exports.getAllDisabledUsers = async (req, res, next) => {
+exports.getAllDisabledUsersByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     const allDisabledUsers = await getAllDisabledByRole("user");
@@ -614,7 +614,7 @@ exports.getAllDisabledUsers = async (req, res, next) => {
 
 // * ENABLE AGENT, VENDOR, OR USER STATUS - ADMIN
 
-exports.enableUser = async (req, res, next) => {
+exports.enableAgentVendorUserByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
   try {
     let singleUser = await User.findById(req.params._id);

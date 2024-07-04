@@ -18,19 +18,19 @@ const {
   updateAddress,
   addAddress,
   updatePassword,
-  getAllUsers,
-  getAllAgents,
-  getAllVendors,
+  getAllUsersByAdmin,
+  getAllAgentsByAdmin,
+  getAllVendorsByAdmin,
   getSingleUserByAdmin,
   getVendorUserByAgent,
   getRedactedAdminByAgent,
   getRedactedAgentByAgentVendorUser,
   getRedactedVendorByUser,
   getRedactedUserByVendor,
-  getAllDisabledAgents,
-  getAllDisabledVendors,
-  getAllDisabledUsers,
-  enableUser,
+  getAllDisabledAgentsByAdmin,
+  getAllDisabledVendorsByAdmin,
+  getAllDisabledUsersByAdmin,
+  enableAgentVendorUserByAdmin,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -55,15 +55,15 @@ router.route("/updatepassword/?:_id").put(isAuthenticated, updatePassword);
 
 router
   .route("/admin/agents")
-  .get(isAuthenticated, isAuthorized("admin"), getAllAgents);
+  .get(isAuthenticated, isAuthorized("admin"), getAllAgentsByAdmin);
 
 router
   .route("/admin/vendors")
-  .get(isAuthenticated, isAuthorized("admin"), getAllVendors);
+  .get(isAuthenticated, isAuthorized("admin"), getAllVendorsByAdmin);
 
 router
   .route("/admin/users")
-  .get(isAuthenticated, isAuthorized("admin"), getAllUsers);
+  .get(isAuthenticated, isAuthorized("admin"), getAllUsersByAdmin);
 
 router
   .route("/admin/single-agent-vendor-user/:_id")
@@ -95,18 +95,18 @@ router
 
 router
   .route("/admin/disabled/agents/")
-  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledAgents);
+  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledAgentsByAdmin);
 
 router
   .route("/admin/disabled/vendors/")
-  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledVendors);
+  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledVendorsByAdmin);
 
 router
   .route("/admin/disabled/users/")
-  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledUsers);
+  .get(isAuthenticated, isAuthorized("admin"), getAllDisabledUsersByAdmin);
 
 router
   .route("/admin/enable/:_id")
-  .get(isAuthenticated, isAuthorized("admin"), enableUser);
+  .get(isAuthenticated, isAuthorized("admin"), enableAgentVendorUserByAdmin);
 
 module.exports = router;
