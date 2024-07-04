@@ -25,6 +25,7 @@ const {
   getVendorUserByAgent,
   getRedactedAdminByAgent,
   getRedactedAgentByAgentVendorUser,
+  getRedactedVendorByUser,
   getRedactedUserByVendor,
   getAllDisabledAgents,
   getAllDisabledVendors,
@@ -83,6 +84,10 @@ router
     isAuthorized("agent", "vendor", "user"),
     getRedactedAgentByAgentVendorUser
   );
+
+router
+  .route("/user/vendor/:_id")
+  .get(isAuthenticated, isAuthorized("user"), getRedactedVendorByUser);
 
 router
   .route("/vendor/user/:_id")

@@ -474,6 +474,43 @@ exports.getRedactedAgentByAgentVendorUser = async (req, res, next) => {
   }
 };
 
+// * GET A SINGLE REDACTED VENDOR - USER
+
+exports.getRedactedVendorByUser = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleVendor = await User.findById(req.params._id);
+    if (!singleVendor) {
+      return res.status(404).json({
+        success: false,
+        message: "Vendor not found!",
+      });
+    } else if (singleVendor.role !== "vendor") {
+      return res.status(401).json({
+        success: false,
+        message: "This vendor does not exist.",
+      });
+    }
+
+    let redactedVendorData = {};
+
+    redactedVendorData.firstname = singleVendor.firstname;
+    redactedVendorData.lastname = singleVendor.lastname;
+
+    res.status(200).json({
+      success: true,
+      redactedVendorData,
+      message: "Fetched the vendor successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
+
 // * GET A SINGLE REDACTED USER - VENDOR
 
 exports.getRedactedUserByVendor = async (req, res, next) => {
