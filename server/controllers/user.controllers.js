@@ -662,9 +662,9 @@ exports.disableAgentVendorUserByAdmin = async (req, res, next) => {
     }
 
     if (singleUser.role === "admin") {
-      res.status(400).json({
+      res.status(401).json({
         success: false,
-        message: "Admin cannot be disabled.",
+        message: "This action is not permitted.",
       });
     } else if (singleUser.status === true) {
       singleUser.status = false;
@@ -703,9 +703,9 @@ exports.disableVendorUserByAgent = async (req, res, next) => {
     }
 
     if (singleUser.role === "admin" || singleUser.role === "agent") {
-      res.status(400).json({
+      res.status(401).json({
         success: false,
-        message: "This action is prohibited.",
+        message: "This action is not permitted.",
       });
     } else if (singleUser.status === true) {
       singleUser.status = false;
