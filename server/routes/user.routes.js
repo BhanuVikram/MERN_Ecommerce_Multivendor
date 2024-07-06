@@ -108,11 +108,11 @@ router
   .get(isAuthenticated, isAuthorized("admin"), getAllDisabledUsersByAdmin);
 
 router
-  .route("/admin/enable/:_id")
+  .route("/admin/enable-agent-vendor-user/:_id")
   .get(isAuthenticated, isAuthorized("admin"), enableAgentVendorUserByAdmin);
 
 router
-  .route("/admin/disable/:_id")
+  .route("/admin/disable-agent-vendor-user/:_id")
   .get(isAuthenticated, isAuthorized("admin"), disableAgentVendorUserByAdmin);
 
 router
