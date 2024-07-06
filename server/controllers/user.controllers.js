@@ -729,3 +729,52 @@ exports.disableVendorUserByAgent = async (req, res, next) => {
     });
   }
 };
+
+// * CHANGE AGENT, VENDOR, USER ROLE - ADMIN
+
+exports.changeAgentVendorUserRoleByAdmin = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleUser = await User.findById(req.params._id);
+    if (!singleUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found!",
+      });
+    }
+
+    if (singleUser.role === "agent") {
+      singleUser.role = "user";
+      singleUser.save();
+      res.status(200).json({
+        success: true,
+        message: "Agent was changed to User successfully!",
+      });
+    } else if (singleUser.role === "vendor") {
+      singleUser.role = "user";
+      singleUser.save();
+      res.status(200).json({
+        success: true,
+        message: "Vendor was changed to User successfully!",
+      });
+    } else if (singleUser.role === "user") {
+      singleUser.role = "agent";
+      singleUser.save();
+      res.status(200).json({
+        success: true,
+        message: "User was changed to Agent successfully!",
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        message: "This operation is not permitted.",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};

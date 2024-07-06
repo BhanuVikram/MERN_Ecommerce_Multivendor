@@ -33,6 +33,7 @@ const {
   enableAgentVendorUserByAdmin,
   disableAgentVendorUserByAdmin,
   disableVendorUserByAgent,
+  changeAgentVendorUserRoleByAdmin,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -118,5 +119,13 @@ router
 router
   .route("/agent/disable-vendor-user/:_id")
   .get(isAuthenticated, isAuthorized("agent"), disableVendorUserByAgent);
+
+router
+  .route("/admin/change-role/:_id")
+  .get(
+    isAuthenticated,
+    isAuthorized("admin"),
+    changeAgentVendorUserRoleByAdmin
+  );
 
 module.exports = router;
