@@ -31,6 +31,7 @@ const {
   getAllDisabledVendorsByAdmin,
   getAllDisabledUsersByAdmin,
   enableAgentVendorUserByAdmin,
+  disableAgentVendorUserByAdmin,
 } = require("../controllers/user.controllers.js");
 
 const router = express.Router();
@@ -108,5 +109,13 @@ router
 router
   .route("/admin/enable/:_id")
   .get(isAuthenticated, isAuthorized("admin"), enableAgentVendorUserByAdmin);
+
+router
+  .route("/admin/disable/:_id")
+  .get(
+    isAuthenticated,
+    isAuthorized("admin"),
+    disableAgentVendorUserByAdmin
+  );
 
 module.exports = router;

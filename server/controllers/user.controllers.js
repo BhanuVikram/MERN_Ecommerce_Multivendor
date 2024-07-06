@@ -612,7 +612,7 @@ exports.getAllDisabledUsersByAdmin = async (req, res, next) => {
   }
 };
 
-// * ENABLE AGENT, VENDOR, OR USER STATUS - ADMIN
+// * ENABLE AGENT, VENDOR, USER STATUS - ADMIN
 
 exports.enableAgentVendorUserByAdmin = async (req, res, next) => {
   res.header("Content-Type", "application/json");
@@ -631,13 +631,53 @@ exports.enableAgentVendorUserByAdmin = async (req, res, next) => {
 
       res.status(200).json({
         success: true,
-        singleUser,
         message: "User enabled successfully!",
       });
     } else {
       res.status(400).json({
         success: false,
         message: "User is already enabled.",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
+
+// * DISABLE AGENT, VENDOR, USER STATUS - ADMIN
+
+exports.disableAgentVendorUserByAdmin = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleUser = await User.findById(req.params._id);
+    if (!singleUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found!",
+      });
+    }
+
+    if (singleUser.role === "admin") {
+      res.status(400).json({
+        success: false,
+        message: "Admin cannot be disabled.",
+      });
+    } else if (singleUser.status === true) {
+      singleUser.status = false;
+      singleUser.save();
+
+      res.status(200).json({
+        success: true,
+        message: "User disabled successfully!",
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: "User is already disabled.",
       });
     }
   } catch (error) {
