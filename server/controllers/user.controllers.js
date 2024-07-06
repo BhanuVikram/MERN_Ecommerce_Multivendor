@@ -688,3 +688,44 @@ exports.disableAgentVendorUserByAdmin = async (req, res, next) => {
     });
   }
 };
+
+// * DISABLE VENDOR, USER STATUS - AGENT
+
+exports.disableVendorUserByAgent = async (req, res, next) => {
+  res.header("Content-Type", "application/json");
+  try {
+    let singleUser = await User.findById(req.params._id);
+    if (!singleUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found!",
+      });
+    }
+
+    if (singleUser.role === "admin" || singleUser.role === "agent") {
+      res.status(400).json({
+        success: false,
+        message: "This action is prohibited.",
+      });
+    } else if (singleUser.status === true) {
+      singleUser.status = false;
+      singleUser.save();
+
+      res.status(200).json({
+        success: true,
+        message: "User disabled successfully!",
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: "User is already disabled.",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      succes: false,
+      message: `Error ${error.message}`,
+    });
+  }
+};
